@@ -1,38 +1,30 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
 
-bool IsPolindrom(char kelime[])
-{
-    int uzunluk, i; 
-    uzunluk = strlen(kelime);
-
-    for (i = 0; i < uzunluk / 2; i++) 
-    {
-        if (kelime[i] != kelime[uzunluk - 1 - i]) 
-        {
-            return false; 
+int IsPolindrom(char word[]) {
+    int i, j;
+    int length = strlen(word);
+    
+    for (i = 0, j = length - 1; i < j; i++, j--) {
+        if (word[i] != word[j]) {
+            return 0;  // Polindrom değil
         }
     }
-
-    return true; 
+    
+    return 1;  // Polindrom
 }
 
-int main()
-{
-    char kelime[100]; 
-
-    printf("Bir kelime girin: ");
-    scanf("%s", kelime); 
-
-    if (IsPolindrom(kelime)) 
-    {
-        printf("Girdiginiz kelime polindromdur.\n"); 
+int main() {
+    char word[100];
+    
+    printf("Kelimeyi girin: ");
+    scanf("%s", word);
+    
+    if (IsPolindrom(word)) {
+        printf("%s bir polindromdur.\n", word);
+    } else {
+        printf("%s bir polindrom değildir.\n", word);
     }
-    else 
-    {
-        printf("Girdiginiz kelime polindrom degildir.\n"); 
-    }
-  return 0;
+    
+    return 0;
 }
-
